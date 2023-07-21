@@ -144,12 +144,14 @@
             $headers = "From: anmeldung@funk-gruppe-event.ch";
             $to = "ivoschwizer@gmail.com";
             $subject = "Funk Gruppe Event | KMU Spotlight 2023";
-        
+            
             // New: Set the Content-Type header to 'text/plain'
             $headers .= "\r\nContent-Type: text/plain; charset=utf-8\r\n";
-
-            $success = "Ihre Anfrage wurde erfolgreich gesendet.";
-            $teilnahme = $essenspraferenz = $vorname = $name = $firma = $email = $mitteilung = "";
+            
+            if (mail($to, $subject, $message_body, $headers)){
+                $success = "";
+                $teilnahme = $essenspraferenz = $vorname = $name = $firma = $email = $mitteilung = "";
+            }
         } else {
             // Store form data for displaying back to the user in case of errors
             $teilnahme = isset($_POST["teilnahme"]) ? $_POST["teilnahme"] : "";
