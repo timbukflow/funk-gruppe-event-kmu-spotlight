@@ -114,10 +114,9 @@ function sendEmail($message_body) {
 
     // Die PHP mail()-Funktion, um die E-Mail zu versenden
     if (mail($to, $subject, $message_body, $headers)) {
-        // Hier kannst du weitere Aktionen ausführen, z.B. eine Bestätigungsmeldung anzeigen
-        // Optional: Logge die erfolgreiche Versendung der E-Mail oder speichere die Formulardaten in einer Datenbank
+        error_log('E-Mail erfolgreich gesendet: ' . $to);
     } else {
-        // E-Mail-Versand ist fehlgeschlagen, du kannst hier entsprechende Fehlerbehandlung durchführen
+        error_log('Fehler beim Versenden der E-Mail an: ' . $to);
     }
 }
 
