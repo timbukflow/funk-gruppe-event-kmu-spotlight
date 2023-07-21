@@ -1,4 +1,4 @@
-<?php
+    <?php
     // Function to sanitize user input to prevent XSS attacks
     function sanitizeInput($data) {
         return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
@@ -165,4 +165,9 @@
             $email2 = isset($_POST["email2"]) ? $_POST["email2"] : "";
         }
     }
-?>
+    ?>
+
+    <!-- ... (Your existing code continues here) ... -->
+
+</body>
+</html>
