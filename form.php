@@ -1,5 +1,4 @@
 <?php
-
 function validateForm() {
     global $teilnahme, $essenspraferenz, $vorname, $name, $firma, $email, $mitteilung, $vorname2, $name2, $firma2, $email2, $essenspraferenz02;
 
@@ -104,79 +103,58 @@ function validateForm() {
     return $errors;
 }
 
-function sendEmail($message_body) {
-    $headers = "From: anmeldung@funk-gruppe-event.ch";
-    $to = "ivoschwizer@gmail.com"; // Hier die E-Mail-Adresse angeben, an die du die Formulardaten senden möchtest
-    $subject = "Funk Gruppe Event | KMU Spotlight 2023";
-    
-    // Optional: Du kannst den Inhalt der E-Mail im HTML-Format darstellen, indem du den Content-Type entsprechend anpasst
-    $headers .= "\r\nContent-Type: text/plain; charset=utf-8\r\n";
-
-    // Die PHP mail()-Funktion, um die E-Mail zu versenden
-    if (mail($to, $subject, $message_body, $headers)) {
-        error_log('E-Mail erfolgreich gesendet: ' . $to);
-    } else {
-        error_log('Fehler beim Versenden der E-Mail an: ' . $to);
-    }
-}
-
-$errors = [];
-$success = "";
-$teilnahme = $essenspraferenz = $vorname = $name = $firma = $email = $mitteilung = $vorname2 = $name2 = $firma2 = $email2 = $essenspraferenz02 = "";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate form data
     $errors = validateForm();
 
-    // Check reCAPTCHA response
-    $captcha_response = $_POST['g-recaptcha-response'];
-    $secret_key = '6LebgkInAAAAAK4nXFcjKyUAvT03n48B69zxheQq'; // Ersetze dies durch deinen reCAPTCHA-Secret Key
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-
-    $data = array(
-        'secret' => $secret_key,
-        'response' => $captcha_response
-    );
-
-    $options = array(
-        'http' => array(
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    $response = json_decode($result, true);
-
-    if (!$response || !$response['success']) {
-        $errors["captcha"] = "Bitte bestätigen Sie, dass Sie kein Roboter sind.";
-    }
-
-    // If no errors, send email
     if (empty($errors)) {
         $message_body = "";
         unset($_POST["submit"]);
-        foreach ($_POST as $key => $value) {
+        foreach($_POST as $key => $value){
             if (is_array($value)) {
                 $value = implode(", ", $value);
             }
-            $message_body .= $key . ": " . htmlspecialchars($value) . "\n";
+            $message_body = "Anmeldung zur Veranstaltung\n\n";
+            $message_body .= "Teilnahme: " . ($teilnahme == "Ja, ich nehme gerne teil" ? "Ja" : "Nein") . "\n";
+            if (isset($_POST['essenspraferenz'])) {
+                $message_body .= "Essenspräferenz: " . ($essenspraferenz == "vegetarisch" ? "vegetarisch" : "Fleisch") . "\n";
+            }
+            $message_body .= "Vorname: " . $vorname . "\n";
+            $message_body .= "Name: " . $name . "\n";
+            $message_body .= "Firma: " . $firma . "\n";
+            $message_body .= "Email: " . $email . "\n";
+            $message_body .= "Mitteilung: " . $mitteilung . "\n";
+
+            if (isset($_POST["additionalPerson"]) && $_POST["additionalPerson"] == 'on') {
+                $message_body .= "\nWeitere Person:\n";
+                if (isset($_POST['essenspraferenz02'])) {
+                    $message_body .= "Essenspräferenz: " . ($essenspraferenz02 == "vegetarisch" ? "vegetarisch" : "Fleisch") . "\n";
+                }
+                $message_body .= "Vorname: " . $vorname2 . "\n";
+                $message_body .= "Name: " . $name2 . "\n";
+                $message_body .= "Firma: " . $firma2 . "\n";
+                $message_body .= "Email: " . $email2 . "\n";
+            }            
         }
+         
+        $headers = "From: anmeldung@funk-gruppe-event.ch";
+        $to = "ivoschwizer@gmail.com";
+        $subject = "Funk Gruppe Event | KMU Spotlight 2023";
+        
+        // New: Set the Content-Type header to 'text/plain'
+        $headers .= "\r\nContent-Type: text/plain; charset=utf-8\r\n";
 
-        sendEmail($message_body);
-
-        $success = "Ihre Anfrage wurde erfolgreich gesendet.";
-        $teilnahme = $essenspraferenz = $vorname = $name = $firma = $email = $mitteilung = $vorname2 = $name2 = $firma2 = $email2 = $essenspraferenz02 = "";
+        if (mail($to, $subject, $message_body, $headers)){
+            $success = "Ihre Anfrage wurde erfolgreich gesendet.";
+            $teilnahme = $essenspraferenz = $vorname = $name = $firma = $email = $mitteilung = "";
+        }
     } else {
-        $teilnahme = isset($_POST["teilnahme"]) ? htmlspecialchars($_POST["teilnahme"]) : "";
-        $essenspraferenz = isset($_POST["essenspraferenz"]) ? htmlspecialchars($_POST["essenspraferenz"]) : "";
-        $vorname = isset($_POST["vorname"]) ? filter_var($_POST["vorname"], FILTER_SANITIZE_STRING) : "";
-        $name = isset($_POST["name"]) ? filter_var($_POST["name"], FILTER_SANITIZE_STRING) : "";
-        $firma = isset($_POST["firma"]) ? filter_var($_POST["firma"], FILTER_SANITIZE_STRING) : "";
-        $email = isset($_POST["email"]) ? filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) : "";
-        $mitteilung = isset($_POST["mitteilung"]) ? htmlspecialchars($_POST["mitteilung"]) : "";
+        $teilnahme = isset($_POST["teilnahme"]) ? $_POST["teilnahme"] : "";
+        $essenspraferenz = isset($_POST["essenspraferenz"]) ? $_POST["essenspraferenz"] : "";
+        $vorname = isset($_POST["vorname"]) ? $_POST["vorname"] : "";
+        $name = isset($_POST["name"]) ? $_POST["name"] : "";
+        $firma = isset($_POST["firma"]) ? $_POST["firma"] : "";
+        $email = isset($_POST["email"]) ? $_POST["email"] : "";
+        $mitteilung = isset($_POST["mitteilung"]) ? $_POST["mitteilung"] : ""; 
     }
 }
 ?>
