@@ -7,7 +7,7 @@
     <title>Funk Gruppe Event | KMU Spotlight 2023</title>
     <meta name="description" content="Funk Gruppe Event | KMU Spotlight 2023">
     <?php require_once 'head.php'; ?>
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6LebgkInAAAAAK4nXFcjKyUAvT03n48B69zxheQq"></script>
 </head>
 
 <body>
@@ -199,6 +199,7 @@
       <h3>Vielen Dank!</h3>
       <p>Ihre Anfrage wurde erfolgreich gesendet.</p>
     </div>
+
     <script>
       <?php if (!empty($success)) : ?>
           // Zeige das Pop-up an, wenn die $success-Variable nicht leer ist
@@ -208,12 +209,31 @@
       <?php endif; ?>
     </script>
 
+<script>
+        $(document).ready(function() {
+            $('#contact-submit').click(function(event) {
+                event.preventDefault();
+    
+                // Führe reCAPTCHA v2-Überprüfung durch
+                grecaptcha.ready(function() {
+                    var site_key = 'DEIN_RECAPTCHA_KEY'; // Ersetze durch deinen reCAPTCHA-Schlüssel
+                    grecaptcha.execute(site_key, { action: 'submit' }).then(function(token) {
+                        // Füge den reCAPTCHA-Token zum Formulardaten hinzu
+                        $('#contact').append('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+    
+                        // Sende das Formular
+                        $('#contact').submit();
+                    });
+                });
+            });
+        });
+    </script>
+
     <?php require_once 'footer.php'; ?>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="js/vendor/jquery-3.6.3.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LebgkInAAAAAK4nXFcjKyUAvT03n48B69zxheQq"></script>
 
 </body>
 </html>
