@@ -194,6 +194,19 @@
             </form>
       </div> 
     </section>
+    
+    <div id="success-popup" style="display: none;">
+      <h3>Vielen Dank!</h3>
+      <p>Ihre Anfrage wurde erfolgreich gesendet.</p>
+    </div>
+    <script>
+      <?php if (!empty($success)) : ?>
+          // Zeige das Pop-up an, wenn die $success-Variable nicht leer ist
+          window.onload = function() {
+              document.getElementById('success-popup').style.display = 'block';
+          };
+      <?php endif; ?>
+    </script>
 
     <?php require_once 'footer.php'; ?>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
