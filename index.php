@@ -82,7 +82,7 @@
       <div id="anmeldung" class="containerform">
             <h2>Anmeldung</h2>
             <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt.</p>
-            <?php include('form.php'); ?>
+            <?php require_once('form.php'); ?>
 
             <form id="contact" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" novalidate>
               
@@ -186,10 +186,33 @@
               <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Anfrage senden</button>
               </fieldset>
-              <div class="success"><?= htmlspecialchars($success); ?></div>
             </form>
+
+            <div id="popup" class="popup">
+              <p>Herzlichen Dank für Ihr Anmeldung. Sie erhatlen in den nächsten Tagen eine Bestätigungs eMail und weitere Details zum Event. Ihr Funk Team</p>
+              <button id="closePopup">OK</button>
+            </div>
+
       </div> 
     </section>
+
+    <script>
+    // Function to show the popup
+    function showPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Function to hide the popup when the 'OK' button is clicked
+    document.getElementById('closePopup').addEventListener('click', function() {
+        document.getElementById('popup').style.display = 'none';
+    });
+
+    // Check if the success variable is set (means form was successfully submitted)
+    // If yes, show the popup
+    <?php if (isset($success)) { ?>
+        showPopup();
+    <?php } ?>
+  </script>
 
     <?php require_once 'footer.php'; ?>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
