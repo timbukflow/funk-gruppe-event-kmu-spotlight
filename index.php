@@ -200,7 +200,7 @@
     <script src="js/vendor/jquery-3.6.3.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeWoEEnAAAAAMCWCag-Xm8ZfjnZxDAHBFadyn0h"></script>
 
 </body>
 </html>
