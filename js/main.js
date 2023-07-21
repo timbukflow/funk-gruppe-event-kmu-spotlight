@@ -28,6 +28,22 @@ $( document ).ready(function() {
         }
       });
 
+      $('#contact-submit').click(function(event) {
+        event.preventDefault();
+
+        // Führe reCAPTCHA v2-Überprüfung durch
+        grecaptcha.ready(function() {
+            var site_key = '6LebgkInAAAAAK4nXFcjKyUAvT03n48B69zxheQq'; // Ersetze durch deinen reCAPTCHA-Schlüssel
+            grecaptcha.execute(site_key, { action: 'submit' }).then(function(token) {
+                // Füge den reCAPTCHA-Token zum Formulardaten hinzu
+                $('#contact').append('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+
+                // Sende das Formular
+                $('#contact').submit();
+            });
+        });
+    });
+
       
 });
   
