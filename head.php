@@ -13,19 +13,19 @@
 <meta property="og:title" content="Funk-Gruppe-Event" />
 <meta property="og:site_name" content="Funk-Gruppe-Event">
 <meta property="og:type" content="Website">
-<meta property="og:description" content="Funk Meet und Eat">
-<meta property="og:url" content="https://www.funk-meet-eat.funk-gruppe-event.ch/">
-<meta property="og:image" content="https://www.funk-meet-eat.funk-gruppe-event.ch/img/share.jpg">
-<meta property="og:image:secure_url" content="https://www.funk-meet-eat.funk-gruppe-event.ch/img/share.jpg">
+<meta property="og:description" content="Funk KMU & Spotlight">
+<meta property="og:url" content="https://kmu-spotlight.funk-gruppe-event.ch">
+<meta property="og:image" content="https://kmu-spotlight.funk-gruppe-event.ch/img/share.jpg">
+<meta property="og:image:secure_url" content="https://kmu-spotlight.funk-gruppe-event.ch/img/share.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Funk-Gruppe-Event">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Funk-Gruppe-Event">
-<meta name="twitter:description" content="Funk Meet und Eat">
-<meta name="twitter:image" content="https://www.funk-meet-eat.funk-gruppe-event.ch/img/share.jpg">
-<meta name="twitter:image:alt" content="Funk-Gruppe-Event | Funk Meet und Eat">
+<meta name="twitter:description" content="Funk KMU & Spotlight">
+<meta name="twitter:image" content="https://kmu-spotlight.funk-gruppe-event.ch/img/share.jpg">
+<meta name="twitter:image:alt" content="Funk-Gruppe-Event | Funk KMU & Spotlight">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Funk-Gruppe-Event">
