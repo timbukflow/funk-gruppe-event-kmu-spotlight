@@ -27,7 +27,5 @@ $( document ).ready(function() {
           additionalPersonFields.style.display = 'none';
         }
       });
-
-      
 });
   

@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="asheader"><h3>Anmeldeschluss ist der 12. April 2023.</h3> </div>
-        <div class="event-title"><img src="./img/funk-meet-eat.svg" alt="funk-logo"></div>
+        <div class="event-title"><img src="./img/funk-kmu-spotlight.svg" alt="funk-kmu-spotlight"></div>
         <button class="homebutton"> <a class="goto" href="#anmeldung">zur Anmeldung</a> </button>
     </header>
     <section>
@@ -189,36 +189,33 @@
             </form>
 
             <div id="popup" class="popup">
-              <p>Herzlichen Dank für Ihr Anmeldung. Sie erhatlen in den nächsten Tagen eine Bestätigungs eMail und weitere Details zum Event. Ihr Funk Team</p>
-              <button id="closePopup">OK</button>
+              <h1>Herzlichen Dank für Ihre Anmeldung.</h1> 
+              <p>Wir freuen uns sehr, dass Sie sich für den KMU Spotlight Event am 19. Oktober 2023 interessieren! Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldug per eMail. <br><br>
+              Herzliche Grüsse <br> 
+              Jonas Müller <br>
+              Leiter Niederlassung Bern</p>
+              <button id="closePopup">Alles klar!</button>
             </div>
-
       </div> 
     </section>
 
     <script>
-    // Function to show the popup
-    function showPopup() {
-        document.getElementById('popup').style.display = 'block';
-    }
+      function showPopup() {
+          document.getElementById('popup').style.display = 'block';
+      }
+      document.getElementById('closePopup').addEventListener('click', function() {
+          document.getElementById('popup').style.display = 'none';
+      });
 
-    // Function to hide the popup when the 'OK' button is clicked
-    document.getElementById('closePopup').addEventListener('click', function() {
-        document.getElementById('popup').style.display = 'none';
-    });
-
-    // Check if the success variable is set (means form was successfully submitted)
-    // If yes, show the popup
-    <?php if (isset($success)) { ?>
-        showPopup();
-    <?php } ?>
-  </script>
+      <?php if (isset($success)) { ?>
+          showPopup();
+      <?php } ?>
+    </script>
 
     <?php require_once 'footer.php'; ?>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="js/vendor/jquery-3.6.3.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

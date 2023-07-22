@@ -1,1 +1,1 @@
-# funk-gruppe-event-meet-eat
+# funk-gruppe-event
