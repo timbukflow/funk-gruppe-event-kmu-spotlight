@@ -190,7 +190,7 @@
 
             <div id="popup" class="popup">
               <h1>Herzlichen Dank für Ihre Anmeldung.</h1> 
-              <p>Wir freuen uns sehr, dass Sie sich für den KMU Spotlight Event am 19. Oktober 2023 interessieren! Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldug per eMail. <br><br>
+              <p>Vielen Dank für Ihr Interesse am KMU Spotlight Event am 19. Oktober 2023! Wir freuen uns sehr über Ihre Anmeldung. In den kommenden Tagen erhalten Sie eine persönliche Bestätigung per E-Mail. <br><br>
               Herzliche Grüsse <br> 
               Jonas Müller <br>
               Leiter Niederlassung Bern</p>
