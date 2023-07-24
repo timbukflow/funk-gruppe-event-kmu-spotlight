@@ -5,7 +5,7 @@
     }
 
     function validateForm() {
-    global $teilnahme, $essenspraferenz, $vorname, $name, $firma, $email, $mitteilung, $vorname2, $name2, $firma2, $email2, $essenspraferenz02;
+    global $teilnahme, $vorname, $name, $firma, $email, $mitteilung;
 
     $errors = [];
 
@@ -13,10 +13,6 @@
         $errors["teilnahme"] = "Bitte wählen Sie mindestens eine Option aus";
     } else {
         $teilnahme = htmlspecialchars($_POST["teilnahme"]);
-    }
-
-    if (isset($_POST["essenspraferenz"])) {
-        $essenspraferenz = htmlspecialchars($_POST["essenspraferenz"]);
     }
 
     if (empty($_POST["vorname"])) {
@@ -59,52 +55,6 @@
         $mitteilung = htmlspecialchars($_POST["mitteilung"]);
     }
 
-    // Zusätzliche Person 
-    $additionalPerson = isset($_POST["additionalPerson"]) && $_POST["additionalPerson"] == 'on';
-
-    if ($additionalPerson) {
-
-        if (empty($_POST["vorname2"])) {
-            $errors["vorname2"] = "Vorname ist erforderlich";
-        } else {
-            $vorname2 = filter_var($_POST["vorname2"], FILTER_SANITIZE_STRING);
-            if (empty($vorname2)) {
-                $errors["vorname2"] = "Es sind nur Buchstaben erlaubt";
-            }
-        }
-
-        if (empty($_POST["name2"])) {
-            $errors["name2"] = "Name ist erforderlich";
-        } else {
-            $name2 = filter_var($_POST["name2"], FILTER_SANITIZE_STRING);
-            if (empty($name2)) {
-                $errors["name2"] = "Es sind nur Buchstaben erlaubt";
-            }
-        }
-
-        if (empty($_POST["firma2"])) {
-            $errors["firma2"] = "Firma ist erforderlich";
-        } else {
-            $firma2 = filter_var($_POST["firma2"], FILTER_SANITIZE_STRING);
-            if (empty($firma2)) {
-                $errors["firma2"] = "Es sind nur Buchstaben erlaubt";
-            }
-        }
-
-        if (empty($_POST["email2"])) {
-            $errors["email2"] = "Email ist erforderlich";
-        } else {
-            $email2 = filter_var($_POST["email2"], FILTER_VALIDATE_EMAIL);
-            if (!$email2) {
-                $errors["email2"] = "Diese Email Adresse ist nicht korrekt";
-            }
-        }
-
-        if (isset($_POST["essenspraferenz02"])) {
-            $essenspraferenz02 = htmlspecialchars($_POST["essenspraferenz02"]);
-        }
-    }
-
     return $errors;
 }
 
@@ -120,29 +70,15 @@
                 }
                 $message_body = "Anmeldung zur Veranstaltung\n\n";
                 $message_body .= "Teilnahme: " . ($teilnahme == "Ja, ich nehme gerne teil" ? "Ja" : "Nein") . "\n";
-                if (isset($_POST['essenspraferenz'])) {
-                    $message_body .= "Essenspräferenz: " . ($essenspraferenz == "vegetarisch" ? "vegetarisch" : "Fleisch") . "\n";
-                }
                 $message_body .= "Vorname: " . sanitizeInput($vorname) . "\n";
                 $message_body .= "Name: " . sanitizeInput($name) . "\n";
                 $message_body .= "Firma: " . sanitizeInput($firma) . "\n";
                 $message_body .= "Email: " . sanitizeInput($email) . "\n";
                 $message_body .= "Mitteilung: " . sanitizeInput($mitteilung) . "\n";
-
-                if (isset($_POST["additionalPerson"]) && $_POST["additionalPerson"] == 'on') {
-                    $message_body .= "\nWeitere Person:\n";
-                    if (isset($_POST['essenspraferenz02'])) {
-                        $message_body .= "Essenspräferenz: " . ($essenspraferenz02 == "vegetarisch" ? "vegetarisch" : "Fleisch") . "\n";
-                    }
-                    $message_body .= "Vorname: " . sanitizeInput($vorname2) . "\n";
-                    $message_body .= "Name: " . sanitizeInput($name2) . "\n";
-                    $message_body .= "Firma: " . sanitizeInput($firma2) . "\n";
-                    $message_body .= "Email: " . sanitizeInput($email2) . "\n";
-                }
             }
 
             $headers = "From: anmeldung@funk-gruppe-event.ch";
-            $to = "bern@funk-gruppe.ch";
+            $to = "ivoschwizer@gmail.com";
             $subject = "Funk Gruppe Event | KMU Spotlight 2023";
             
             $headers .= "\r\nContent-Type: text/plain; charset=utf-8\r\n";
@@ -153,17 +89,11 @@
             }
         } else {
             $teilnahme = isset($_POST["teilnahme"]) ? $_POST["teilnahme"] : "";
-            $essenspraferenz = isset($_POST["essenspraferenz"]) ? $_POST["essenspraferenz"] : "";
             $vorname = isset($_POST["vorname"]) ? $_POST["vorname"] : "";
             $name = isset($_POST["name"]) ? $_POST["name"] : "";
             $firma = isset($_POST["firma"]) ? $_POST["firma"] : "";
             $email = isset($_POST["email"]) ? $_POST["email"] : "";
             $mitteilung = isset($_POST["mitteilung"]) ? $_POST["mitteilung"] : "";
-            $vorname2 = isset($_POST["vorname2"]) ? $_POST["vorname2"] : "";
-            $name2 = isset($_POST["name2"]) ? $_POST["name2"] : "";
-            $firma2 = isset($_POST["firma2"]) ? $_POST["firma2"] : "";
-            $email2 = isset($_POST["email2"]) ? $_POST["email2"] : "";
         }
     }
-    
-    ?>
+?>

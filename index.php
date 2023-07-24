@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <div class="asheader"><h3>Anmeldeschluss ist der 12. April 2023.</h3> </div>
+        <div class="asheader"><h3>Anmeldeschluss ist der 7. September 2023.</h3> </div>
         <div class="event-title"><img src="./img/funk-kmu-spotlight.svg" alt="funk-kmu-spotlight"></div>
         <button class="homebutton"> <a class="goto" href="#anmeldung">zur Anmeldung</a> </button>
     </header>
@@ -100,19 +100,6 @@
                 <span class="error"><?= isset($errors["teilnahme"]) ? $errors["teilnahme"] : $teilnahme_error ?></span>
               </fieldset>
 
-              <fieldset class="checkbox">
-                <div>
-                  <input class="radio" type="radio" id="checkboxvegi" name="essenspraferenz" value="vegetarisch" tabindex="3" 
-                  <?= (isset($essenspraferenz) && $essenspraferenz == "vegetarisch") ? "checked" : "" ?>>
-                  <label for="checkboxvegi">vegetarisch</label>
-                </div>
-                <div>
-                  <input class="radio" type="radio" id="checkboxfleisch" name="essenspraferenz" value="mit Fleisch" tabindex="4"
-                  <?= (isset($essenspraferenz) && $essenspraferenz == "mit Fleisch") ? "checked" : "" ?>>
-                  <label for="checkboxfleisch">mit Fleisch</label>
-                </div>
-              </fieldset>
-
               <fieldset>
                 <input placeholder="Vorname&#42;" type="text" name="vorname" value="<?= htmlspecialchars($vorname) ?>" tabindex="5" autofocus>
                 <span class="error"><?= isset($errors["vorname"]) ? htmlspecialchars($errors["vorname"]) : htmlspecialchars($vorname_error) ?></span>
@@ -138,51 +125,6 @@
                 <span class="error"><?= isset($errors["mitteilung"]) ? htmlspecialchars($errors["mitteilung"]) : htmlspecialchars($mitteilung_error) ?></span>
               </fieldset>
 
-
-              <!-- Weitere Personen anmelden -->
-              <fieldset class="checkbox">
-                  <div>
-                      <input class="radio" type="checkbox" id="additionalPerson" name="additionalPerson" tabindex="10">
-                      <label for="additionalPerson">Weitere Person anmelden</label>
-                  </div>
-              </fieldset>
-
-              <!-- Zusätzliche Felder für die weitere Person -->
-              <fieldset id="additionalPersonFields" style="display:none;">                  
-                  <fieldset class="checkbox">
-                    <div>
-                      <input class="radio" type="radio" id="checkboxvegi02" name="essenspraferenz02" value="vegetarisch" tabindex="3" 
-                      <?= (isset($essenspraferenz02) && $essenspraferenz02 == "vegetarisch") ? "checked" : "" ?>>
-                      <label for="checkboxvegi02">vegetarisch</label>
-                    </div>
-                    <div>
-                      <input class="radio" type="radio" id="checkboxfleisch02" name="essenspraferenz02" value="mit Fleisch" tabindex="4"
-                      <?= (isset($essenspraferenz02) && $essenspraferenz02 == "mit Fleisch") ? "checked" : "" ?>>
-                      <label for="checkboxfleisch02">mit Fleisch</label>
-                    </div>
-                  </fieldset>
-
-                  <fieldset>
-                      <input placeholder="Vorname&#42;" type="text" name="vorname2" value="<?= htmlspecialchars($vorname2) ?>" tabindex="13">
-                      <span class="error"><?= isset($errors["vorname2"]) ? htmlspecialchars($errors["vorname2"]) : "" ?></span>
-                  </fieldset>
-
-                  <fieldset>
-                      <input placeholder="Name&#42;" type="text" name="name2" value="<?= htmlspecialchars($name2) ?>" tabindex="14">
-                      <span class="error"><?= isset($errors["name2"]) ? htmlspecialchars($errors["name2"]) : "" ?></span>
-                  </fieldset>
-
-                  <fieldset>
-                      <input placeholder="Firma&#42;" type="text" name="firma2" value="<?= htmlspecialchars($firma2) ?>" tabindex="15">
-                      <span class="error"><?= isset($errors["firma2"]) ? htmlspecialchars($errors["firma2"]) : "" ?></span>
-                  </fieldset>
-
-                  <fieldset>
-                      <input placeholder="Email&#42;" type="text" name="email2" value="<?= htmlspecialchars($email2) ?>" tabindex="16">
-                      <span class="error"><?= isset($errors["email2"]) ? htmlspecialchars($errors["email2"]) : "" ?></span>
-                  </fieldset>
-              </fieldset>
-
               <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Anfrage senden</button>
               </fieldset>
@@ -190,7 +132,7 @@
 
             <div id="popup" class="popup">
               <h1>Herzlichen Dank für Ihre Anmeldung.</h1> 
-              <p>Wir freuen uns sehr, dass Sie sich für den KMU Spotlight Event am 19. Oktober 2023 interessieren! Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldung per eMail. <br><br>
+              <p>Wir freuen uns sehr, dass Sie sich für den KMU Spotlight Event am 19. Oktober 2023 interessieren! Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldung per E-Mail. <br><br>
               Herzliche Grüsse <br> 
               Jonas Müller <br>
               Leiter Niederlassung Bern</p>
