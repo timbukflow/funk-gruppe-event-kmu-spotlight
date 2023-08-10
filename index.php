@@ -11,7 +11,6 @@
 
 <body>
     <header>
-        <div class="asheader"><h3>Anmeldeschluss ist der 7. September 2023.</h3> </div>
         <div class="event-title"><img src="./img/funk-kmu-spotlight.svg" alt="funk-kmu-spotlight"></div>
         <button class="homebutton"> <a class="goto" href="#anmeldung">zur Anmeldung</a> </button>
     </header>
@@ -81,7 +80,7 @@
       
       <div id="anmeldung" class="containerform">
             <h2>Anmeldung</h2>
-            <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt.</p>
+            <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt. <strong>Anmeldeschluss ist der 7. September 2023.</strong></p>
             <?php require_once('form.php'); ?>
 
             <form id="contact" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" novalidate>
@@ -132,7 +131,7 @@
 
             <div id="popup" class="popup">
               <h1>Herzlichen Dank für Ihre Anmeldung.</h1> 
-              <p>Wir freuen uns sehr, dass Sie sich für den KMU Spotlight Event am 19. Oktober 2023 interessieren! Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldung per E-Mail. <br><br>
+              <p>Sie erhalten in den nächsten Tagen eine persönliche Bestätigung der Anmeldung per E-Mail. <br><br>
               Herzliche Grüsse <br> 
               Jonas Müller <br>
               Leiter Niederlassung Bern</p>
