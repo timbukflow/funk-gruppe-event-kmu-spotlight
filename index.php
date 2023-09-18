@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css" />
-    <title>Funk Gruppe Event | KMU Spotlight 2023</title>
-    <meta name="description" content="Funk Gruppe Event | KMU Spotlight 2023">
+    <title>Funk Gruppe Event | KMU Spotlight 2024</title>
+    <meta name="description" content="Funk Gruppe Event | KMU Spotlight 2024">
     <?php require_once 'head.php'; ?>
 </head>
 
@@ -43,7 +43,7 @@
           <div class="acclist">
             <div class="grid02">
               <p><strong>Datum</strong> </p>
-              <p><strong>Donnerstag, 19. Oktober 2023</strong></p>
+              <p><strong>Donnerstag, 11. April 2024</strong></p>
               <p>16:15 Uhr</p>
               <p>Eintreffen der Gäste</p>
               <p>16:30 Uhr</p>
@@ -80,7 +80,7 @@
       
       <div id="anmeldung" class="containerform">
             <h2>Anmeldung</h2>
-            <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt. <strong>Anmeldeschluss ist der 7. September 2023.</strong></p>
+            <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt. <strong>Anmeldeschluss ist der 15. März 2024.</strong></p>
             <?php require_once('form.php'); ?>
 
             <form id="contact" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" novalidate>
