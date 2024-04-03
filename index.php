@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="event-title"><img src="./img/funk-kmu-spotlight.svg" alt="funk-kmu-spotlight"></div>
-        <button class="homebutton"> <a class="goto" href="#anmeldung">zur Anmeldung</a> </button>
+        <!-- <button class="homebutton"> <a class="goto" href="#anmeldung">zur Anmeldung</a> </button> -->
     </header>
     <section>
       <article class="intro">
@@ -78,7 +78,7 @@
         </div>
       </article>
       
-      <div id="anmeldung" class="containerform">
+      <!-- <div id="anmeldung" class="containerform">
             <h2>Anmeldung</h2>
             <p>Die Teilnehmerzahl ist beschränkt. Die Anmeldungen werden nach Eingang berücksichtigt. <strong>Anmeldeschluss ist der 15. März 2024.</strong></p>
             <?php require_once('form.php'); ?>
@@ -137,7 +137,7 @@
               Leiter Niederlassung Bern</p>
               <button id="closePopup">Alles klar!</button>
             </div>
-      </div> 
+      </div>  -->
     </section>
 
     <script>
